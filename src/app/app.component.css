@@ -1,0 +1,13 @@
+.custom-link {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+  
+.login-button {
+  margin-left: 16px;
+}

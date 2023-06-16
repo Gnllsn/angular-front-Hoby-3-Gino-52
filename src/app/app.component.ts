@@ -9,7 +9,7 @@ import { AssignmentsService } from './shared/assignments.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Application de gestion de devoirs à rendre';
+  title = 'Gestion de devoirs à rendre';
   labelConnexion = "Se connecter";
   nom:string = "";
   currentRoute:string = "";
