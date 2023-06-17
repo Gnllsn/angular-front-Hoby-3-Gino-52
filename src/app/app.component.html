@@ -1,5 +1,7 @@
 <!-- Toolbar -->
 <mat-toolbar>
+    <button mat-button (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>
+
     <span>
         <a routerLink="/home"  class="custom-link">{{title}}</a>
     </span>
@@ -10,15 +12,28 @@
 </mat-toolbar>
 <!-- End Toolbar -->
 
-<p>
-    <button mat-raised-button color="primary" (click)="creerDonneesDeTest()">
-        Peupler BD avec données de test
-    </button>
-</p>
-
-
+<!-- Sidebar -->
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav class="sidenav" mode="side" opened>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/">Home</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content class="sidenav-content">
+    <p>
+        <button mat-raised-button color="primary" (click)="creerDonneesDeTest()">
+            Peupler BD avec données de test
+        </button>
+    </p>
 
 <!-- Indique que le composant affiché sera celui
-     correspondant à l'URL courant
+ correspondant à l'URL courant
 -->
-<router-outlet></router-outlet>
+
+    <router-outlet></router-outlet>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>
+  
+<!-- End sidebar -->
+

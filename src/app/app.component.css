@@ -11,3 +11,15 @@
 .login-button {
   margin-left: 16px;
 }
+
+.sidenav {
+  width: 200px; 
+}
+
+.sidenav-container {
+  height: 100vh; 
+}
+
+.sidenav-content {
+  padding: 10px;
+}
