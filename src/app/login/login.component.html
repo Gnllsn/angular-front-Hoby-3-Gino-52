@@ -1,1 +1,25 @@
-<p>ICI FORMULAIRE DE CONNEXION</p>
+<div class="" style="padding: 20px 20px;box-shadow: 0px 0px 2px 0px ;border-radius: .25rem;width: 350px;; margin: 0 auto;">
+    <form [formGroup]="formulaire_Control" (ngSubmit)="Control_Valeur()" novalidate>
+        <div style="padding: 5px ;margin: 0 auto ;width: 240px;;">
+            <mat-form-field appearance="outline" style="width: 240px;margin: 0 auto;">
+                <mat-label>Username</mat-label>
+                <input (keyup)="check_valeur_name()" [ngClass]="error.css.name" formControlName="name" matInput placeholder="Entrez votre username">
+            </mat-form-field>
+            <small class="invalid-feedback" style="color: red;" *ngIf="error.bool.name" >{{error.texte.name}}</small>            
+        </div>
+        <div style="padding: 5px ;margin: 0 auto ;width: 240px;margin-top: 10px;">
+            <mat-form-field appearance="outline">
+                <mat-label>Mot de passe</mat-label>
+                <input (keyup)="check_valeur_password()" [ngClass]="error.css.password" formControlName="password" matInput placeholder="Entrez votre mot de passe" matInput [type]="hide ? 'password' : 'text'">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+            <small class="invalid-feedback" style="color: red;" *ngIf="error.bool.password" >{{error.texte.password}}</small>  
+        </div>
+        <div class="" style="text-align: center;margin-top: 15px;">
+            <button *ngIf="!loading" mat-flat-button color="primary">Se Connecter</button>
+            <mat-spinner *ngIf="loading" style="margin: 0 auto ;width: 30px;"></mat-spinner>
+        </div>
+    </form>
+</div>
