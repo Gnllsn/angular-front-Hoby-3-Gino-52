@@ -1,6 +1,15 @@
 <form ngForm #assignmentForm (submit)="onSubmit($event); assignmentForm.reset()" class="form">
 
     <mat-form-field>
+      <mat-label>Matière</mat-label>
+      <mat-select  [(ngModel)]="matiere" name="matiere" >
+        <mat-option *ngFor="let m of matieres" [value]="m['id']">
+          {{m['libelle']}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
         <input matInput [(ngModel)]="nomDevoir" name="nom" placeholder="Nom du devoir" required>
     </mat-form-field>
 
