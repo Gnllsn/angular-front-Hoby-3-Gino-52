@@ -5,5 +5,6 @@ export class Assignment {
     dateDeRendu!: Date;
     rendu!: boolean;
     matiere !: string;
+    note !: number;
 }
 
