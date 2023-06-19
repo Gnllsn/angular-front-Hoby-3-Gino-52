@@ -11,6 +11,7 @@ import { AuthService } from 'src/app/shared/auth.service';
 })
 export class AssignmentDetailComponent implements OnInit {
   assignmentTransmis?: Assignment;
+  note = 0 ;
 
   constructor(private assignmentsService: AssignmentsService,
     private route: ActivatedRoute,
@@ -53,6 +54,7 @@ export class AssignmentDetailComponent implements OnInit {
     if (!this.assignmentTransmis) return;
 
     this.assignmentTransmis.rendu = true;
+    this.assignmentTransmis.note = this.note;
 
     // on appelle le service pour faire l'update
     this.assignmentsService.updateAssignment(this.assignmentTransmis)
