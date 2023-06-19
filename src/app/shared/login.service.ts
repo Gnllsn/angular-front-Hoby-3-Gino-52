@@ -9,8 +9,8 @@ import { ReplaySubject } from 'rxjs';
 })
 export class LoginService {
 	
-	// base_url :string = 'https://back-api-nfim.onrender.com/auth/' ; 
-	base_url :string = ' http://localhost:8010/auth/' ; 
+	base_url :string = 'https://back-api-nfim.onrender.com/auth/' ; 
+	// base_url :string = ' http://localhost:8010/auth/' ; 
 	
 	constructor(private http:HttpClient,private storageService: StorageService) { }
 	
