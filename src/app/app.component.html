@@ -7,7 +7,7 @@
     </span>
     <span class="spacer"></span>
     <a routerLink="/login" class="custom-link">
-        <button mat-button class="login-button" (click)="login()">{{labelConnexion}}</button>
+        <button mat-button class="login-button" (click)="login()">{{ authService.isActive() ?  "Se déconnecter" : "Se connecter"}}</button>
     </a>
 </mat-toolbar>
 <!-- End Toolbar -->
