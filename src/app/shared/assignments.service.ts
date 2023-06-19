@@ -14,6 +14,7 @@ assignments:Assignment[] = []
   constructor(private loggingService:LoggingService,
     private http:HttpClient) { }
 
+
     // uri_api = 'http://localhost:8010/api/assignments';
     uri_api = 'https://back-api-nfim.onrender.com/api/assignments';
 
