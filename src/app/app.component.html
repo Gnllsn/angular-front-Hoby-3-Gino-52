@@ -1,7 +1,6 @@
 <!-- Toolbar -->
-<mat-toolbar style="background-color: #3f51b5;color:rgb(7, 5, 5);">
-    <button mat-button (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>
-
+<mat-toolbar class="bg-theme-color">
+    <button mat-icon-button (click)="sidenav.toggle()" ><mat-icon >menu</mat-icon></button>
     <span>
         <a routerLink="/home"  class="custom-link">{{title}}</a>
     </span>

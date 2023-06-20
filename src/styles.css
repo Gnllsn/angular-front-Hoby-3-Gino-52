@@ -6,3 +6,12 @@ body {
     font-family: Roboto, 
     "Helvetica Neue", sans-serif; 
 }
+
+
+.theme-color {
+    color: #276a94;
+}
+
+.bg-theme-color{
+    background-color: #276a94;
+}
