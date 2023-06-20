@@ -1,27 +1,48 @@
 # AssignmentApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.1.
+## Participants
+  - Andriamamonjy Hoby Arivony ( N°03 )
+  - Rasoanaivo Gino Allison ( N°52 )
+## Description du projet
+Le projet consiste à la gestion de devoirs ( assignments ) .
+La plateforme peut être accéder par trois profils différents :
+  - L'administrateur : pouvant éditer et supprimer les assignments
+  - Le professeur : pouvant marquer un assignment comme rendu
+  - L'étudiant : pouvant créer un ou plusieurs assignment(s).
+La plateforme est accessible uniquement après s'être connecté.
 
-## Development server
+## Fonctionnalités disponibles
+  - Login : utilisant JWT
+  - Sidebar et toolbar
+  - Liste des assignments
+  - Création d'assignments
+  - Image d'illustration pour les matières et les profs
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Contributions
+  - Gino :
+      - Connexion
+      - Génération de données
+      - Participation à l'amélioration de l'affichage
+      - Création collection postman
+  - Hoby :
+      - Création d'assignments
+      - Sidebar et toolbar
+      - Participation à l'amélioration de l'affichage
+   
+## Installer le projet sur son local 
+Pour installer le projet localement : 
+  - Cloner les deux dépôts sur github ( le back et le front )
+  - Dans chaque dossier , lancer **npm install**
+  - Mettre à jour les urls dans les services pour que ça concorde avec l'url de l'api ( par défaut localhost:8010 )
+  - Mettre à jour le lien vers la base dans le dépôt de l'api
+  - Lancer l'api ( server.js )
+  - Créer des utilisateurs à partir de la collection Postman ( disponible dans le dépôt de l'api )
+  - Lancer l'application front ( ng serve --open ) une fois que tout est bien connecté
 
-## Code scaffolding
+## Codes 
+  - Le sidebar ainsi que le toolbar ont été inspirer de la documentation officielle de material 
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Liens
+  - Lien angular front : https://front-api-3ag8.onrender.com/
+  - Lien api back : https://back-api-nfim.onrender.com/
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
