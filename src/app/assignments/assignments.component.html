@@ -2,7 +2,7 @@
     <div style="">
         <h1>Liste des devoirs à rendre</h1>
     </div>
-    <div style="padding: 12px 0px ;margin-left: 20px;">
+    <div style="padding: 12px 0px ;margin-left: 20px;" *ngIf="type==3">
         <a routerLink="/add" style="margin-top: 15px;" >
             <button mat-flat-button style="background-color: #529f5a;"> Ajouter Assignment
             </button>

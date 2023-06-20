@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AuthService } from './shared/auth.service';
 import { NavigationEnd, Router } from '@angular/router';
 import { AssignmentsService } from './shared/assignments.service';
+import { StorageService } from './shared/storage.service';
 
 @Component({
 	selector: 'app-root',
@@ -12,11 +13,15 @@ export class AppComponent {
 	title = 'Gestion de devoirs à rendre';
 	nom:string = "";
 	currentRoute:string = "";
+  user : any;
+  loggedIn:boolean = false;
+
 	
 	constructor(
 		public authService:AuthService, 
 		private router:Router,
-		private assigmmentsService:AssignmentsService
+		private assigmmentsService:AssignmentsService,
+    private storageService:StorageService
 		) {		
 			router.events.subscribe(event => {
 				if(event instanceof NavigationEnd) {
@@ -26,6 +31,7 @@ export class AppComponent {
 		}
 		
 		ngOnInit() {
+      this.setUser();
 		}
 		
 		login() {
@@ -54,5 +60,11 @@ export class AppComponent {
 				window.location.reload();
 			});
 		}
+
+    setUser(){
+      var data = this.storageService.getStorage();
+      this.user = data.user;
+      this.loggedIn = true;
+    }
 	}
 	

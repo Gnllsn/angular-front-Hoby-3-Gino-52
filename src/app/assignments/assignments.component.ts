@@ -26,6 +26,7 @@ export class AssignmentsComponent implements OnInit {
   hasNextPage: boolean = false;
   nextPage: number = 0;
   user : any;
+  type = 1;
 
   @ViewChild('scroller') scroller!: CdkVirtualScrollViewport;
 
@@ -154,5 +155,6 @@ export class AssignmentsComponent implements OnInit {
   setUser(){
     var data = this.storageService.getStorage();
     this.user = data.user;
+    this.type = this.user.type;
   }
 }

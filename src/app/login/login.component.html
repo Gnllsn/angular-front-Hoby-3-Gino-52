@@ -3,14 +3,14 @@
         <div style="padding: 5px ;margin: 0 auto ;width: 240px;;">
             <mat-form-field appearance="outline" style="width: 240px;margin: 0 auto;">
                 <mat-label>Username</mat-label>
-                <input (keyup)="check_valeur_name()" [ngClass]="error.css.name" formControlName="name" matInput placeholder="Entrez votre username">
+                <input (keyup)="check_valeur_name()" [ngClass]="error.css.name" formControlName="name" matInput placeholder="Username">
             </mat-form-field>
             <small class="invalid-feedback" style="color: red;" *ngIf="error.bool.name" >{{error.texte.name}}</small>            
         </div>
         <div style="padding: 5px ;margin: 0 auto ;width: 240px;margin-top: 10px;">
             <mat-form-field appearance="outline">
                 <mat-label>Mot de passe</mat-label>
-                <input (keyup)="check_valeur_password()" [ngClass]="error.css.password" formControlName="password" matInput placeholder="Entrez votre mot de passe" matInput [type]="hide ? 'password' : 'text'">
+                <input (keyup)="check_valeur_password()" [ngClass]="error.css.password" formControlName="password" matInput placeholder="Mot de passe" matInput [type]="hide ? 'password' : 'text'">
                 <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                     <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>

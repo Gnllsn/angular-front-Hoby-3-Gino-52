@@ -1,11 +1,11 @@
 <!-- Toolbar -->
 <mat-toolbar class="bg-theme-color">
-    <button mat-icon-button (click)="sidenav.toggle()" ><mat-icon >menu</mat-icon></button>
+    <button *ngIf="loggedIn" mat-icon-button (click)="sidenav.toggle()"   ><mat-icon >menu</mat-icon></button>
     <span>
         <a routerLink="/home"  class="custom-link">{{title}}</a>
     </span>
     <span class="spacer"></span>
-    <a routerLink="/login" class="custom-link">
+    <a routerLink="/login" class="custom-link" >
         <button mat-button class="login-button" (click)="login()">{{ authService.isActive() ?  "Se déconnecter" : "Se connecter"}}</button>
     </a>
 </mat-toolbar>
@@ -13,9 +13,9 @@
 
 <!-- Sidebar -->
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #sidenav class="sidenav" mode="side" opened>
+  <mat-sidenav #sidenav class="sidenav" mode="side" [opened]="loggedIn">
     <mat-nav-list>
-      <a mat-list-item routerLink="/">Home</a>
+      <a mat-list-item routerLink="/">Assignments</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content class="sidenav-content">
