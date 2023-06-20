@@ -41,7 +41,7 @@ export class AddAssignmentComponent {
     nouvelAssignment.nom = this.nomDevoir;
     nouvelAssignment.dateDeRendu = this.dateDeRendu;
     nouvelAssignment.rendu = false;
-    nouvelAssignment.matiere = this.matiere;
+    nouvelAssignment.matiere = this.matiere._id;
     nouvelAssignment.prof = this.matiere.profId;
     // nouvelAssignment.matiere = "6490fcfe89e6dbac5e6ff983";
     console.log(this.matiere);

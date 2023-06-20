@@ -3,6 +3,6 @@ export class Matiere {
     id!: number;
     libelle!: string;
     photo!: Date;
-    profId!: boolean;
+    profId!: string;
 }
 
