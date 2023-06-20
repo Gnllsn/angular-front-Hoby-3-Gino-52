@@ -37,7 +37,7 @@ export class AddAssignmentComponent {
     let nouvelAssignment = new Assignment();
     // génération d'id, plus tard ce sera fait dans la BD
     nouvelAssignment.id = Math.abs(Math.random() * 1000000000000000);
-    nouvelAssignment.auteur = this.user;
+    nouvelAssignment.auteur = this.user._id;
     nouvelAssignment.nom = this.nomDevoir;
     nouvelAssignment.dateDeRendu = this.dateDeRendu;
     nouvelAssignment.rendu = false;
