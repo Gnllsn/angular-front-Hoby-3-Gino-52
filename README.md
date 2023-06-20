@@ -18,6 +18,17 @@ La plateforme est accessible uniquement après s'être connecté.
   - Création d'assignments
   - Image d'illustration pour les matières et les profs
 
+### Login de test 
+  - Admin :
+    - login : admin
+    - mot de passe : password
+  - Professeur :
+    - login : prof
+    - mot de passe : password
+  - Etudiant :
+    - login : gino1
+    - mot de passe : password
+
 ## Contributions
   - Gino :
       - Connexion
