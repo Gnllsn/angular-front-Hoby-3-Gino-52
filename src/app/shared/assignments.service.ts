@@ -17,8 +17,8 @@ assignments:Assignment[] = []
     private http:HttpClient) { }
 
 
-    uri_api = 'http://localhost:8010/api/assignments';
-    // uri_api = 'https://back-api-nfim.onrender.com/api/assignments';
+    // uri_api = 'http://localhost:8010/api/assignments';
+    uri_api = 'https://back-api-nfim.onrender.com/api/assignments';
 
   getAssignments(page:number, limit:number):Observable<any> {
     // normalement on doit envoyer une requête HTTP
