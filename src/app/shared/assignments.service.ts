@@ -4,6 +4,7 @@ import { Observable, catchError, forkJoin, map, of, tap } from 'rxjs';
 import { LoggingService } from './logging.service';
 import { HttpClient } from '@angular/common/http';
 import { bdInitialAssignments } from './data';
+import { StorageService } from './storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,7 @@ export class AssignmentsService {
 // tableau de devoirs à rendre
 assignments:Assignment[] = []
   constructor(private loggingService:LoggingService,
+    private storageService: StorageService,
     private http:HttpClient) { }
 
 
@@ -23,7 +25,8 @@ assignments:Assignment[] = []
     // sur un web service, et ça peut prendre du temps
     // On a donc besoin "d'attendre que les données arrivent".
     // Angular utilise pour cela la notion d'Observable
-    return this.http.get<Assignment[]>(this.uri_api + "?page=" + page + "&limit=" + limit);
+    const options = this.storageService.formOptionJSON(true,this.storageService.getStorage().token) ; 
+    return this.http.get<Assignment[]>(this.uri_api + "?page=" + page + "&limit=" + limit,options);
     
     // of() permet de créer un Observable qui va
     // contenir les données du tableau assignments
@@ -32,6 +35,7 @@ assignments:Assignment[] = []
 
   getAssignment(id:number):Observable<Assignment|undefined> {
     // Plus tard on utilisera un Web Service et une BD
+    const options = this.storageService.formOptionJSON(true,this.storageService.getStorage().token) ; 
     return this.http.get<Assignment|undefined>(`${this.uri_api}/${id}`)
    
     .pipe(
@@ -52,7 +56,7 @@ assignments:Assignment[] = []
         return a;
       }),
       catchError(this.handleError<Assignment>("Erreur dans le traitement de assignment avec id = " + id))
-    )
+    ,options)
     
     // On va chercher dans le tableau des assignments
     // l'assignment dont l'id est celui passé en paramètre
@@ -78,7 +82,8 @@ assignments:Assignment[] = []
     console.log("------------");
 
     // plus tard on utilisera un web service pour l'ajout dans une vraie BD
-    return this.http.post<Assignment>(this.uri_api, assignment);
+    const options = this.storageService.formOptionJSON(true,this.storageService.getStorage().token) ; 
+    return this.http.post<Assignment>(this.uri_api, assignment,options);
     // on ajoute le devoir au tableau des devoirs
     //this.assignments.push(assignment);
     // on retourne un message de succès à travers
@@ -89,7 +94,8 @@ assignments:Assignment[] = []
   updateAssignment(assignment:Assignment):Observable<any> {
     // Normalement : on appelle un web service pour l'update des
     // données
-    return this.http.put<Assignment>(this.uri_api, assignment);
+    const options = this.storageService.formOptionJSON(true,this.storageService.getStorage().token) ; 
+    return this.http.put<Assignment>(this.uri_api, assignment,options);
 
     // dans la version tableau : rien à faire (pourquoi ? Parceque assignment
     // est déjà un élément du tableau this.assignments)
@@ -100,7 +106,9 @@ assignments:Assignment[] = []
   }
 
   deleteAssignment(assignment:Assignment):Observable<any> {
-    return this.http.delete(this.uri_api + "/" + assignment._id)
+    const options = this.storageService.formOptionJSON(true,this.storageService.getStorage().token) ; 
+
+    return this.http.delete(this.uri_api + "/" + assignment._id,options)
       // pour supprimer on passe à la méthode splice
     // l'index de l'assignment à supprimer et 
     // le nombre d'éléments à supprimer (ici 1)
