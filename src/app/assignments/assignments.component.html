@@ -33,7 +33,7 @@
     
     <ng-container matColumnDef="dateDeRendu">
         <th mat-header-cell *matHeaderCellDef> Date de rendu </th>
-        <td mat-cell *matCellDef="let element"> {{element.dateDeRendu}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.dateDeRendu | date: 'dd/MM/yy'}} </td>
     </ng-container>
     
     <ng-container matColumnDef="rendu">

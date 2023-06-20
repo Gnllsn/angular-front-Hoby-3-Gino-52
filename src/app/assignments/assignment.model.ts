@@ -4,8 +4,9 @@ export class Assignment {
     nom!: string;
     dateDeRendu!: Date;
     rendu!: boolean;
-    matiere !: string;
+    matiere !: object;
     note !: number;
-    auteur !: string;
+    auteur !: object;
+    prof !: object;
 }
 

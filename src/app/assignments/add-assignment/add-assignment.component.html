@@ -3,7 +3,7 @@
     <mat-form-field>
       <mat-label>Matière</mat-label>
       <mat-select  [(ngModel)]="matiere" name="matiere" >
-        <mat-option *ngFor="let m of matieres" [value]="m['_id']">
+        <mat-option *ngFor="let m of matieres" [value]="m">
           {{m['libelle']}}
         </mat-option>
       </mat-select>

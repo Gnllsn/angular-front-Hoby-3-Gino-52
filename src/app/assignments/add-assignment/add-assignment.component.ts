@@ -15,7 +15,7 @@ export class AddAssignmentComponent {
   // champs du formulaire
   nomDevoir = "";
   dateDeRendu!: Date;
-  matiere = "";
+  matiere : any ;
   matieres = [];
   user : any;
 
@@ -37,11 +37,12 @@ export class AddAssignmentComponent {
     let nouvelAssignment = new Assignment();
     // génération d'id, plus tard ce sera fait dans la BD
     nouvelAssignment.id = Math.abs(Math.random() * 1000000000000000);
-    nouvelAssignment.auteur = this.user._id;
+    nouvelAssignment.auteur = this.user;
     nouvelAssignment.nom = this.nomDevoir;
     nouvelAssignment.dateDeRendu = this.dateDeRendu;
     nouvelAssignment.rendu = false;
     nouvelAssignment.matiere = this.matiere;
+    nouvelAssignment.prof = this.matiere.profId;
     // nouvelAssignment.matiere = "6490fcfe89e6dbac5e6ff983";
     console.log(this.matiere);
 
