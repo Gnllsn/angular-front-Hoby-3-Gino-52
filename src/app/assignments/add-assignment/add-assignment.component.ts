@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Assignment } from '../assignment.model';
 import { AssignmentsService } from 'src/app/shared/assignments.service';
 import { MatiereService } from 'src/app/shared/matiere.service';
+import { StorageService } from 'src/app/shared/storage.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -16,13 +17,16 @@ export class AddAssignmentComponent {
   dateDeRendu!: Date;
   matiere = "";
   matieres = [];
+  user : any;
 
-
-  constructor(private assignmentsService: AssignmentsService, private matiereService: MatiereService,
+  constructor(private assignmentsService: AssignmentsService, 
+              private matiereService: MatiereService,
+              private storageService: StorageService,
               private router:Router) { }
 
   ngOnInit(): void {
     this.getMatieres();    
+    this.setUser();
   }
 
   onSubmit(event: any) {
@@ -33,10 +37,12 @@ export class AddAssignmentComponent {
     let nouvelAssignment = new Assignment();
     // génération d'id, plus tard ce sera fait dans la BD
     nouvelAssignment.id = Math.abs(Math.random() * 1000000000000000);
+    nouvelAssignment.auteur = this.user._id;
     nouvelAssignment.nom = this.nomDevoir;
     nouvelAssignment.dateDeRendu = this.dateDeRendu;
     nouvelAssignment.rendu = false;
     nouvelAssignment.matiere = this.matiere;
+    // nouvelAssignment.matiere = "6490fcfe89e6dbac5e6ff983";
     console.log(this.matiere);
 
     // on demande au service d'ajouter l'assignment
@@ -61,5 +67,10 @@ export class AddAssignmentComponent {
         console.log(this.matieres[i]['id']);
       }
     });
+  }
+
+  setUser(){
+    var data = this.storageService.getStorage();
+    this.user = data.user;
   }
 }

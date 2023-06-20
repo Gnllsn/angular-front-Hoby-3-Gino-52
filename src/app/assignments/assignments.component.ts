@@ -1,6 +1,7 @@
 import { Component, NgZone, OnInit, ViewChild } from '@angular/core';
 import { Assignment } from './assignment.model';
 import { AssignmentsService } from '../shared/assignments.service';
+import { StorageService } from '../shared/storage.service';
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 import { filter, map, pairwise, tap, throttleTime } from 'rxjs';
 
@@ -25,11 +26,12 @@ export class AssignmentsComponent implements OnInit {
   prevPage: number = 0;
   hasNextPage: boolean = false;
   nextPage: number = 0;
-;
+  user : any;
 
   @ViewChild('scroller') scroller!: CdkVirtualScrollViewport;
 
   constructor(private assignmentsService:AssignmentsService,
+              private storageService : StorageService, 
               private ngZone: NgZone) {    
   }
   
@@ -41,6 +43,7 @@ export class AssignmentsComponent implements OnInit {
     // TODO
 
     this.getAssignments();
+    this.setUser();
   }
 
   ngAfterViewInit() { 
@@ -147,5 +150,10 @@ export class AssignmentsComponent implements OnInit {
     this.page = event.pageIndex;
     this.limit = event.pageSize;
     this.getAssignments();
+  }
+
+  setUser(){
+    var data = this.storageService.getStorage();
+    this.user = data.user;
   }
 }

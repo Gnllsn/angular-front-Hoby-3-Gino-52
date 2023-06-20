@@ -10,7 +10,7 @@ export class MatiereService {
 
   constructor(private http:HttpClient) { }
 
-//   uri_api = 'http://localhost:8010/api/matieres';
+  // uri_api = 'http://localhost:8010/api/matieres';
     uri_api = 'https://back-api-nfim.onrender.com/api/matieres';
 
   getMatieres():Observable<any> {
