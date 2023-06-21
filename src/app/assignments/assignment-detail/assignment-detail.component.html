@@ -18,6 +18,6 @@
       EDIT
     </button>
 
-  <button mat-raised-button color="accent" (click)="onDeleteAssignment()">DELETE</button>
+  <button mat-raised-button color="accent" (click)="onDeleteAssignment()" *ngIf="type == 1">DELETE</button>
   </mat-card-actions>
 </mat-card>

@@ -3,6 +3,7 @@ import { Assignment } from '../assignment.model';
 import { AssignmentsService } from 'src/app/shared/assignments.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/auth.service';
+import { StorageService } from 'src/app/shared/storage.service';
 
 @Component({
   selector: 'app-assignment-detail',
@@ -12,8 +13,11 @@ import { AuthService } from 'src/app/shared/auth.service';
 export class AssignmentDetailComponent implements OnInit {
   assignmentTransmis?: Assignment;
   note = 0 ;
+  user : any;
+  type = 1;
 
   constructor(private assignmentsService: AssignmentsService,
+    private storageService: StorageService,
     private route: ActivatedRoute,
     private router: Router,
     private authService:AuthService) { }
@@ -29,7 +33,10 @@ export class AssignmentDetailComponent implements OnInit {
     this.assignmentsService.getAssignment(id)
       .subscribe(assignment => {
         this.assignmentTransmis = assignment;
+        this.note = assignment.note;
       });
+
+    this.setUser();
   }
 
   onDeleteAssignment() {
@@ -82,5 +89,11 @@ export class AssignmentDetailComponent implements OnInit {
   isLogged() {
     // renvoie si on est loggé ou pas
     return this.authService.loggedIn;
+  }
+
+  setUser(){
+    var data = this.storageService.getStorage();
+    this.user = data.user;
+    this.type = this.user.type;
   }
 }
