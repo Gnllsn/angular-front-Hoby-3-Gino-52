@@ -35,6 +35,8 @@ assignments:Assignment[] = []
 
   getAssignment(id:number):Observable<Assignment|undefined> {
     // Plus tard on utilisera un Web Service et une BD
+    console.log("Calling...");
+    console.log(`${this.uri_api}/${id}`);
     const options = this.storageService.formOptionJSON(true,this.storageService.getStorage().token) ; 
     return this.http.get<Assignment|undefined>(`${this.uri_api}/${id}`)
    
