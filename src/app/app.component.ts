@@ -13,8 +13,9 @@ export class AppComponent {
 	title = 'Gestion de devoirs à rendre';
 	nom:string = "";
 	currentRoute:string = "";
-  user : any;
-  loggedIn:boolean = false;
+	user : any;
+	loggedIn:boolean = false;
+	type = 1;
 
 	
 	constructor(
@@ -65,6 +66,7 @@ export class AppComponent {
       var data = this.storageService.getStorage();
       this.user = data.user;
       this.loggedIn = true;
+	  this.type = this.user.type;
     }
-	}
+}
 	
