@@ -45,9 +45,18 @@ export class AssignmentsComponent implements OnInit {
 	}	
 	
 	ngOnInit(): void {
-		console.log("OnInit Composant instancié et juste avant le rendu HTML (le composant est visible dans la page HTML)");			
-		this.getAssignments();
+		console.log("OnInit Composant instancié et juste avant le rendu HTML (le composant est visible dans la page HTML)");
 		this.setUser();
+		
+		if ( this.type == 3) {
+			this.getAssignmentsEtudiant();
+		} else if ( this.type == 2 ) {
+			this.getAssignmentsProf();
+		} else  {
+			this.getAssignments();
+		}
+		
+		
 	}
 	
 	ngAfterViewInit() { 
@@ -133,6 +142,46 @@ export class AssignmentsComponent implements OnInit {
 			var data = this.storageService.getStorage();
 			this.user = data.user;
 			this.type = this.user.type;
+		}
+
+		getAssignmentsEtudiant() {
+			console.log("On va chercher les assignments dans le service");
+			
+			const success = (response:any)=>{
+				if (response.status == 200) {
+					console.log(response)
+					this.setAssignmentsFromData(response) ; 
+				}else{	
+					console.log(response);
+				}
+			}
+			
+			const error = (response:any)=>{
+				console.log(response);
+				return false;
+			}
+			console.log("appel assignment ",this.page, this.limit)
+			this.assignmentsService.getAssignmentsEtudiant(this.page, this.limit, this.user._id).subscribe(success,error) ; 
+		}
+
+		getAssignmentsProf() {
+			console.log("On va chercher les assignments dans le service");
+			
+			const success = (response:any)=>{
+				if (response.status == 200) {
+					console.log(response)
+					this.setAssignmentsFromData(response) ; 
+				}else{	
+					console.log(response);
+				}
+			}
+			
+			const error = (response:any)=>{
+				console.log(response);
+				return false;
+			}
+			console.log("appel assignment ",this.page, this.limit)
+			this.assignmentsService.getAssignmentsProf(this.page, this.limit , this.user._id).subscribe(success,error) ; 
 		}
 	}
 	
