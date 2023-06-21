@@ -21,7 +21,7 @@ La plateforme est accessible uniquement après s'être connecté.
 ### Login de test 
   - Admin :
     - login : admin
-    - mot de passe : password
+    - mot de passe : admin
   - Professeur :
     - login : prof
     - mot de passe : password
