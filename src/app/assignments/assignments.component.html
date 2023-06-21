@@ -31,7 +31,8 @@
                     <img width="50" height="50" mat-card-image src="https://imgtr.ee/images/2023/06/20/Z4L0A.png" alt="Photo of a Shiba Inu">
                 </div>
                 <mat-card-title>
-                    <a routerLink="/assignments/{{assignment._id}}/edit">{{assignment.nom}}</a> 
+                    <a routerLink="/assignments/{{assignment._id}}/edit" *ngIf="type != 3">{{assignment.nom}}</a> 
+                    <a routerLink="/assignments/{{assignment._id}}" *ngIf="type == 3">{{assignment.nom}}</a> 
                 </mat-card-title>
                 <mat-card-subtitle>Etudiant</mat-card-subtitle>
             </mat-card-header>
