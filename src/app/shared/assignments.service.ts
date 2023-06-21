@@ -164,5 +164,21 @@ assignments:Assignment[] = []
  
     return forkJoin(appelsVersAddAssignment);
   }
+
+  getAssignmentsProf(page:number, limit:number, id_prof : string):Observable<any> {
+
+    const options = this.storageService.formOptionJSON(true,this.storageService.getStorage().token) ; 
+    console.log(this.uri_api + '/prof/' + id_prof + "?page=" + page + "&limit=" + limit);
+    return this.http.get<Assignment[]>(this.uri_api + '/prof/' + id_prof + "?page=" + page + "&limit=" + limit,options);
+  
+  }
+
+  getAssignmentsEtudiant(page:number, limit:number, id_etudiant : string):Observable<any> {
+
+    const options = this.storageService.formOptionJSON(true,this.storageService.getStorage().token) ; 
+    console.log(this.uri_api + '/etudiant/'+ id_etudiant + "?page=" + page + "&limit=" + limit);
+    return this.http.get<Assignment[]>(this.uri_api + '/etudiant/'+ id_etudiant + "?page=" + page + "&limit=" + limit,options);
+    
+  }
  
 }
