@@ -33,39 +33,46 @@ assignments:Assignment[] = []
     //return of(this.assignments);
   }
 
-  getAssignment(id:number):Observable<Assignment|undefined> {
+  // getAssignment(id:number):Observable<Assignment|undefined> {
+  //   // Plus tard on utilisera un Web Service et une BD
+  //   console.log("Calling...");
+  //   console.log(`${this.uri_api}/${id}`);
+  //   const options = this.storageService.formOptionJSON(true,this.storageService.getStorage().token) ; 
+  //   return this.http.get<Assignment|undefined>(`${this.uri_api}/${id}`)
+   
+  //   .pipe(
+  //     map(a => {
+  //       if(a) {
+  //         a.nom += " MAP MAP MAP";
+  //       }
+  //       return a;
+  //     }),
+  //     tap(a => {
+  //       if(a)
+  //         console.log("ICI DANS LE TAP " + a.nom)
+  //     }),
+  //     map(a => {
+  //       if(a) {
+  //         a.nom += " TOTOTOTO";
+  //       }
+  //       return a;
+  //     }),
+  //     catchError(this.handleError<Assignment>("Erreur dans le traitement de assignment avec id = " + id))
+  //   ,options)
+    
+  //   // On va chercher dans le tableau des assignments
+  //   // l'assignment dont l'id est celui passé en paramètre
+    
+  //   //const assignment = this.assignments.find(a => a.id === id);
+  //   // on retourne cet assignment encapsulé dans un Observable
+  //   //return of(assignment);
+  // }
+  getAssignment(id:number):Observable<any> {
     // Plus tard on utilisera un Web Service et une BD
     console.log("Calling...");
     console.log(`${this.uri_api}/${id}`);
     const options = this.storageService.formOptionJSON(true,this.storageService.getStorage().token) ; 
-    return this.http.get<Assignment|undefined>(`${this.uri_api}/${id}`)
-   
-    .pipe(
-      map(a => {
-        if(a) {
-          a.nom += " MAP MAP MAP";
-        }
-        return a;
-      }),
-      tap(a => {
-        if(a)
-          console.log("ICI DANS LE TAP " + a.nom)
-      }),
-      map(a => {
-        if(a) {
-          a.nom += " TOTOTOTO";
-        }
-        return a;
-      }),
-      catchError(this.handleError<Assignment>("Erreur dans le traitement de assignment avec id = " + id))
-    ,options)
-    
-    // On va chercher dans le tableau des assignments
-    // l'assignment dont l'id est celui passé en paramètre
-    
-    //const assignment = this.assignments.find(a => a.id === id);
-    // on retourne cet assignment encapsulé dans un Observable
-    //return of(assignment);
+    return this.http.get<Assignment|undefined>(`${this.uri_api}/${id}`,options);
   }
 
   private handleError<T>(operation: any, result?: T) {
