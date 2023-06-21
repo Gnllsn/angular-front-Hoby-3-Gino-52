@@ -132,6 +132,7 @@ export class AssignmentsComponent implements OnInit {
 		setUser(){
 			var data = this.storageService.getStorage();
 			this.user = data.user;
+			this.type = this.user.type;
 		}
 	}
 	
